@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from .form import ArticleForm
 
 from .models import Article
 
@@ -16,7 +16,7 @@ class ArticleListView(LoginRequiredMixin, ListView):
 class ArticleUpdateView(LoginRequiredMixin, UpdateView, UserPassesTestMixin):
     model = Article
     template_name = 'article_edit.html'
-    fields = ('title', 'body')
+    fields = ('title', 'body', 'image', 'explicit')
     login_url = 'login'
 
     def test_func(self):
@@ -44,7 +44,7 @@ class ArticleDeleteView(LoginRequiredMixin, DeleteView, UserPassesTestMixin):
 class ArticleCreateView(LoginRequiredMixin, CreateView):
     model = Article
     template_name = 'article_new.html'
-    fields = ('title', 'body')
+    fields = ('title', 'body', 'image', 'explicit')
     login_url = 'login'
 
     def form_valid(self, form):
