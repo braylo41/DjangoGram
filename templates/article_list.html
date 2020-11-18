@@ -5,19 +5,19 @@
 	{% if user.age > 17 or article.explicit == False %}
 		<div class="card">
 		<span class="font-weight-bold">{{article.title}}</span> &middot;
-		<span class="text-muted">by {{article.author}} | {{user.city}}, {{user.state}} | {{article.date}}
+		<span class="text-muted">by {{article.author}} | {{article.author.city}}, {{article.author.state}} | {{article.date}}
 		</div>
 		<div class="card-body">
 		{% if article.image != Null %}
-		<img src="/media/{{ article.image}}" alt="">
+		<img src="/media/{{ article.image}}" alt="" width="350" height="300">
 		{% endif %}
 		{{article.body}}
 		</div>
-	{% if user.name == article.author %}
+	
 		<div class="card-footer text-center text-muted">
 		<a href="{% url 'article_edit' article.pk %}">Edit</a> | <a href="{% url 'article_delete' article.pk %}">Delete</a>
 		</div>
-	{% endif %}
+	
 
 		<div class="card-footer">
 			{% for comment in article.comments.all %}
