@@ -9,8 +9,9 @@
 		</div>
 		<div class="card-body">
 		{% if article.image != Null %}
-		<img src="/media/{{ article.image}}" alt="" width="350" height="300">
-		{% endif %}
+		<img src="/media/{{ article.image}}" alt="">
+		{% endif %}<br><br>
+
 		{{article.body}}
 		</div>
 	
@@ -19,14 +20,7 @@
 		</div>
 	
 
-		<div class="card-footer">
-			{% for comment in article.comments.all %}
-				<p>
-				<span class="font-weight-bold">{{comment.author}} &middot;</span>
-				{{comment}}
-				</p>
-
-			{% endfor %}
+		
 		{% else %}
 		{% endif %}
 		</div>

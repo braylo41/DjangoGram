@@ -4,11 +4,11 @@
 <h2>{{object.title}}</h2>
 <p>by {{object.author}} | {{user.city}}, {{user.state}} | {{object.date}}</p>
 {% if article.image != Null %}
-		<img src="/media/{{ article.image}}" height="300" width="300">
+		<img src="/media/{{ article.image}}">
 		{% endif %}
 <p>{{object.body}}</p>
 </div>
-<p><a href="{% url 'article_edit' article.pk %}">Edit</a>
+<p><a href="{% url 'article_edit' article.pk %}">Edit</a> |
 <a href="{% url 'article_delete' article.pk %}">Delete</a></p>
-<p>Back to <a href="{% url 'article_list' %}">All Articles</a></p>
+<p>Back to <a href="{% url 'article_list' %}">All Posts</a></p>
 {% endblock content %}
